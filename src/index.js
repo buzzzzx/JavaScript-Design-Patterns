@@ -7,6 +7,7 @@ import {
   Place,
   Car,
 } from "./UMLInterview";
+import { SingleObject } from "./SingletonPattern";
 
 // ====UML Interview====
 // Test: question 1
@@ -53,3 +54,14 @@ console.log(park.emptyNumber());
 park.in(car3);
 console.log("第三辆车离开");
 park.out(car3);
+
+// ====单例模式====
+let instance1 = SingleObject.getInstance();
+let instance2 = SingleObject.getInstance();
+instance1.login();
+instance2.login();
+console.log("instance1 === instance2", instance1 === instance2);
+
+// 因为 JS 没有访问控制，所以无法阻止用户 new 操作
+let instance3 = new SingleObject();
+console.log("instance1 !== instance3", instance1 !== instance3);
